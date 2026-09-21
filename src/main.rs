@@ -34,7 +34,7 @@ pub struct App {
         long,
         help = "Port to listen on",
         env = "FM_PORT",
-        default_value_t = 8080
+        default_value_t = 7890
     )]
     port: u16,
 
