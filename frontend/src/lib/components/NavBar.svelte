@@ -1,5 +1,8 @@
-<script lang="ts">
-</script>
+<!--
+  This Source Code Form is subject to the terms of the Mozilla Public
+  License, v. 2.0. If a copy of the MPL was not distributed with this
+  file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-->
 
 <nav class="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950">
 	<div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 sm:py-3">
