@@ -2,7 +2,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-self.onmessage = async (event: MessageEvent<{ type: string; url: string }>) => {
+self.onmessage = async (event: MessageEvent<{ type: string; url: string; bytes?: number }>) => {
 	if (event.data.type === 'start_download') {
 		try {
 			const start = performance.now();
@@ -36,7 +36,7 @@ self.onmessage = async (event: MessageEvent<{ type: string; url: string }>) => {
 		}
 	} else if (event.data.type === 'start_upload') {
 		try {
-			const targetBytes = 50_000_000; // 50 MB payload
+			const targetBytes = event.data.bytes ?? 50_000_000;
 			const payload = new Uint8Array(targetBytes);
 			const start = performance.now();
 			const xhr = new XMLHttpRequest();

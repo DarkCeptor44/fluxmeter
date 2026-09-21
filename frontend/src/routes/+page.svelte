@@ -6,8 +6,9 @@
 
 <script lang="ts">
 	import type { TestStage } from '$lib/types';
-	import { onDestroy } from 'svelte';
 	import { median, sleep } from '$lib/utils';
+	import { onDestroy } from 'svelte';
+	import { browser } from '$app/environment';
 
 	let ping = $state(0);
 	let downloadMbps = $state(0);
@@ -32,6 +33,12 @@
 	const circumference = 2 * Math.PI * radius;
 	let strokeDashoffset = $derived(circumference - (gaugeProgress / 100) * (circumference * 0.75));
 
+	function getSavedPayloadBytes(key: 'downloadSize' | 'uploadSize'): number {
+		if (!browser) return 50_000_000;
+		const val = Number(localStorage.getItem(key));
+		return val && val > 0 ? val * 1_000_000 : 50_000_000;
+	}
+
 	async function runPing() {
 		stage = 'ping';
 
@@ -46,7 +53,11 @@
 		ping = median(times);
 	}
 
-	function runWorkerTest(type: 'start_download' | 'start_upload', url: string): Promise<void> {
+	function runWorkerTest(
+		type: 'start_download' | 'start_upload',
+		url: string,
+		bytes?: number
+	): Promise<void> {
 		return new Promise((resolve, reject) => {
 			worker = new Worker(new URL('$lib/speedtest.worker.ts', import.meta.url), {
 				type: 'module'
@@ -70,19 +81,20 @@
 				}
 			};
 
-			worker.postMessage({ type, url });
+			worker.postMessage({ type, url, bytes });
 		});
 	}
 
 	async function runDownload() {
 		stage = 'download';
-		const targetBytes = 50_000_000; // 50 MB
+		const targetBytes = getSavedPayloadBytes('downloadSize');
 		await runWorkerTest('start_download', `/api/v1/download?bytes=${targetBytes}`);
 	}
 
 	async function runUpload() {
 		stage = 'upload';
-		await runWorkerTest('start_upload', '/api/v1/upload');
+		const targetBytes = getSavedPayloadBytes('uploadSize');
+		await runWorkerTest('start_upload', '/api/v1/upload', targetBytes);
 	}
 
 	async function startTest() {
