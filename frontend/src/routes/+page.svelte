@@ -115,18 +115,18 @@
 	<title>Fluxmeter</title>
 </svelte:head>
 
-<div class="mx-auto flex max-w-4xl flex-col items-center gap-4 px-4 py-2">
+<div class="mx-auto flex max-w-4xl flex-col items-center gap-6 px-4 py-4 sm:gap-8 sm:py-6">
 	<div
-		class="flex items-center gap-6 rounded-full border border-zinc-800/80 bg-zinc-900/40 px-5 py-1.5 text-xs font-medium tracking-wider text-zinc-400 uppercase backdrop-blur-md"
+		class="flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 px-4 py-2 text-xs font-medium tracking-wider text-zinc-400 uppercase backdrop-blur-md sm:gap-6 sm:rounded-full sm:px-5 sm:py-1.5"
 	>
 		<span class={stage === 'ping' ? 'font-bold text-emerald-400' : ''}>1. Ping</span>
-		<span class="text-zinc-700">•</span>
+		<span class="hidden text-zinc-700 sm:inline">•</span>
 		<span class={stage === 'download' ? 'font-bold text-emerald-400' : ''}>2. Download</span>
-		<span class="text-zinc-700">•</span>
+		<span class="hidden text-zinc-700 sm:inline">•</span>
 		<span class={stage === 'upload' ? 'font-bold text-emerald-400' : ''}>3. Upload</span>
 	</div>
 
-	<div class="relative flex h-64 w-64 items-center justify-center">
+	<div class="relative flex h-56 w-56 items-center justify-center sm:h-64 sm:w-64">
 		<svg class="h-full w-full -rotate-225 transform" viewBox="0 0 300 300">
 			<circle
 				cx="150"
@@ -164,13 +164,13 @@
 			{#if stage === 'idle' || stage === 'complete'}
 				<button
 					onclick={startTest}
-					class="group relative flex h-28 w-28 cursor-pointer items-center justify-center rounded-full bg-linear-to-tr from-emerald-500 to-teal-600 font-bold text-zinc-950 shadow-lg shadow-emerald-500/20 transition-all duration-200 hover:scale-105 active:scale-95"
+					class="group relative flex h-24 w-24 cursor-pointer items-center justify-center rounded-full bg-linear-to-tr from-emerald-500 to-teal-600 font-bold text-zinc-950 shadow-lg shadow-emerald-500/20 transition-all duration-200 hover:scale-105 active:scale-95 sm:h-28 sm:w-28"
 				>
-					<span class="text-lg tracking-wider uppercase">Start</span>
+					<span class="text-base tracking-wider uppercase sm:text-lg">Start</span>
 				</button>
 			{:else}
 				<div class="flex flex-col items-center">
-					<span class="font-mono text-5xl font-extrabold tracking-tight text-zinc-100">
+					<span class="font-mono text-4xl font-extrabold tracking-tight text-zinc-100 sm:text-5xl">
 						{#if stage === 'download'}
 							{downloadMbps.toFixed(0)}
 						{:else if stage === 'upload'}
@@ -190,33 +190,37 @@
 		</div>
 	</div>
 
-	<div class="grid w-full grid-cols-3 gap-3">
+	<div class="grid w-full grid-cols-1 gap-3 sm:grid-cols-3">
 		<div
-			class="flex flex-col rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-4 backdrop-blur-md"
+			class="flex flex-col rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-3.5 backdrop-blur-md sm:p-4"
 		>
 			<span class="text-xs font-semibold tracking-wider text-zinc-400 uppercase">Ping</span>
-			<div class="mt-1 flex items-baseline gap-1">
-				<span class="font-mono text-2xl font-bold text-zinc-100">{ping.toFixed(2)}</span>
+			<div class="mt-1 flex flex-wrap items-baseline gap-x-1.5 gap-y-0">
+				<span class="font-mono text-xl font-bold text-zinc-100 sm:text-2xl">{ping.toFixed(2)}</span>
 				<span class="text-xs text-zinc-500">ms</span>
 			</div>
 		</div>
 
 		<div
-			class="flex flex-col rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-4 backdrop-blur-md"
+			class="flex flex-col rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-3.5 backdrop-blur-md sm:p-4"
 		>
 			<span class="text-xs font-semibold tracking-wider text-zinc-400 uppercase">Download</span>
-			<div class="mt-1 flex items-baseline gap-1">
-				<span class="font-mono text-2xl font-bold text-zinc-100">{downloadMbps.toFixed(0)}</span>
+			<div class="mt-1 flex flex-wrap items-baseline gap-x-1.5 gap-y-0">
+				<span class="font-mono text-xl font-bold text-zinc-100 sm:text-2xl"
+					>{downloadMbps.toFixed(0)}</span
+				>
 				<span class="text-xs text-zinc-500">Mbps</span>
 			</div>
 		</div>
 
 		<div
-			class="flex flex-col rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-4 backdrop-blur-md"
+			class="flex flex-col rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-3.5 backdrop-blur-md sm:p-4"
 		>
 			<span class="text-xs font-semibold tracking-wider text-zinc-400 uppercase">Upload</span>
-			<div class="mt-1 flex items-baseline gap-1">
-				<span class="font-mono text-2xl font-bold text-zinc-100">{uploadMbps.toFixed(0)}</span>
+			<div class="mt-1 flex flex-wrap items-baseline gap-x-1.5 gap-y-0">
+				<span class="font-mono text-xl font-bold text-zinc-100 sm:text-2xl"
+					>{uploadMbps.toFixed(0)}</span
+				>
 				<span class="text-xs text-zinc-500">Mbps</span>
 			</div>
 		</div>
