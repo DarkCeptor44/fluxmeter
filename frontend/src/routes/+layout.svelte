@@ -23,6 +23,6 @@
 
 <NavBar />
 
-<main class="mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:px-6">
+<main class="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-4 py-2 sm:px-6">
 	{@render children()}
 </main>
