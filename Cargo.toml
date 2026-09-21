@@ -6,7 +6,6 @@ description = "A lightweight speedtest server"
 edition = "2024"
 rust-version = "1.85"
 license = "MPL-2.0"
-homepage = "https://github.com/DarkCeptor44/fluxmeter"
 repository = "https://github.com/DarkCeptor44/fluxmeter"
 categories = ["web-programming::http-server", "command-line-utilities"]
 
