@@ -1,0 +1,42 @@
+[package]
+name = "fluxmeter"
+version = "0.1.0"
+authors = ["DarkCeptor44"]
+description = "A lightweight speedtest server"
+edition = "2024"
+rust-version = "1.85"
+license = "MPL-2.0"
+homepage = "https://github.com/DarkCeptor44/fluxmeter"
+repository = "https://github.com/DarkCeptor44/fluxmeter"
+categories = ["web-programming::http-server", "command-line-utilities"]
+
+[dependencies]
+anyhow = "1.0.104"
+axum = { version = "0.8.9", features = ["http2"] }
+clap = { version = "4.6.7", features = ["derive", "env"] }
+dotenvy = "0.15.7"
+log = "0.4.34"
+mime_guess = "2.0.5"
+parking_lot = "0.12.5"
+rust-embed = "8.12.0"
+simplelog = "0.12.2"
+tokio = { version = "1.53.1", features = [
+    "macros",
+    "rt-multi-thread",
+    "signal",
+] }
+tower = "0.5.3"
+tower-http = { version = "0.7.1", features = ["fs"] }
+utoipa = { version = "5.5.0", features = ["axum_extras"] }
+utoipa-swagger-ui = { version = "9.0.2", features = ["axum"] }
+
+[profile.release]
+strip = true
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[profile.fast]
+inherits = "release"
+lto = false
