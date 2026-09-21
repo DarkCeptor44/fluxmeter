@@ -4,7 +4,7 @@
 
 mod v1;
 
-use crate::server::utils::Service;
+use crate::server::{api::v1::ApiDocV1, utils::Service};
 use axum::{
     Router,
     body::Body,
@@ -12,6 +12,7 @@ use axum::{
     response::IntoResponse,
 };
 use std::sync::Arc;
+use utoipa::OpenApi;
 use utoipa_swagger_ui::SwaggerUi;
 
 #[derive(rust_embed::RustEmbed)]
