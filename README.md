@@ -1,6 +1,10 @@
 # Fluxmeter
 
-Fluxmeter is a lightweight speedtest server written in Rust.
+![Fluxmeter page](./assets/page.png)
+
+[![crates.io](https://img.shields.io/crates/v/fluxmeter.svg)](https://crates.io/crates/fluxmeter) [![MSRV](https://img.shields.io/crates/msrv/fluxmeter)](https://crates.io/crates/fluxmeter) [![license](https://img.shields.io/crates/l/fluxmeter.svg)](./LICENSE) [![downloads](https://img.shields.io/crates/d/fluxmeter)](https://crates.io/crates/fluxmeter)
+
+Fluxmeter is a lightweight, self-hosted speedtest server written in Rust. It embeds a modern web interface directly into a single, zero-dependency binary.
 
 ## Getting Started
 
