@@ -24,8 +24,15 @@ pub async fn handle_server(args: App) -> Result<()> {
         exit(1);
     }
 
+    let header_text = format!(" Fluxmeter v{VERSION} ");
+    let line_width: usize = 51;
+
+    let total_dashes = line_width.saturating_sub(header_text.len());
+    let left_dashes = "-".repeat(total_dashes / 2);
+    let right_dashes = "-".repeat(total_dashes - left_dashes.len());
+
     info!(
-        "\n===================================================\n------------------ Fluxmeter v{VERSION} ------------------\n===================================================\n",
+        "\n===================================================\n{left_dashes}{header_text}{right_dashes}\n==================================================="
     );
     let server_args = ServerArgs {
         host: args.host,
