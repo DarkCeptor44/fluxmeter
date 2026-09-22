@@ -133,11 +133,22 @@
 	<div
 		class="flex flex-wrap items-center justify-center gap-6 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 px-4 py-2 text-xs font-medium tracking-wider text-zinc-400 uppercase sm:rounded-full sm:px-5 sm:py-1.5"
 	>
-		<span class={stage === 'ping' ? 'font-bold text-emerald-400' : ''}>1. Ping</span>
+		<span
+			class="transition-colors duration-150 {stage === 'ping' ? 'font-bold text-emerald-400' : ''}"
+			>1. Ping</span
+		>
 		<span class="hidden text-zinc-700 sm:inline">•</span>
-		<span class={stage === 'download' ? 'font-bold text-emerald-400' : ''}>2. Download</span>
+		<span
+			class="transition-colors duration-150 {stage === 'download'
+				? 'font-bold text-emerald-400'
+				: ''}">2. Download</span
+		>
 		<span class="hidden text-zinc-700 sm:inline">•</span>
-		<span class={stage === 'upload' ? 'font-bold text-emerald-400' : ''}>3. Upload</span>
+		<span
+			class="transition-colors duration-150 {stage === 'upload'
+				? 'font-bold text-emerald-400'
+				: ''}">3. Upload</span
+		>
 	</div>
 
 	<div class="relative flex h-64 w-64 items-center justify-center">
