@@ -55,7 +55,10 @@
 		bind:this={element}
 		bind:value
 		oninput={handleInput}
-		class="w-full rounded-lg border border-zinc-800 bg-zinc-950/60 py-1.5 pr-10 pl-3 font-mono text-sm text-zinc-100 scheme-dark transition-colors duration-150 outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 sm:w-32 {className}"
+		class="w-full rounded-lg border border-zinc-800 bg-zinc-950/60 py-1.5 pr-10 pl-3 font-mono text-sm text-zinc-100 scheme-dark transition-colors duration-150 outline-none enabled:hover:border-zinc-700/70 enabled:focus:border-emerald-500/50 enabled:focus:ring-1 enabled:focus:ring-emerald-500/50 sm:w-32 {type ===
+		'number'
+			? '[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none'
+			: ''} {className}"
 	/>
 	{#if prefix}
 		<span class="pointer-events-none absolute right-3 text-xs font-semibold text-zinc-500">

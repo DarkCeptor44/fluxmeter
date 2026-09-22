@@ -48,7 +48,7 @@
 </svelte:head>
 
 <div class="mx-auto max-w-2xl px-4 py-6">
-	<div class="rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 backdrop-blur-md sm:p-6">
+	<div class="rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 sm:p-6">
 		<div class="mb-6 border-b border-zinc-800/60 pb-4">
 			<h2 class="text-lg font-semibold tracking-tight text-zinc-100">Test Configuration</h2>
 			<p class="mt-1 text-xs text-zinc-400">Adjust payload sizes used for bandwidth measurement.</p>

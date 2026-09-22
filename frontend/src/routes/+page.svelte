@@ -129,7 +129,7 @@
 
 <div class="mx-auto flex max-w-4xl flex-col items-center gap-6 px-4 py-4 sm:gap-8 sm:py-6">
 	<div
-		class="flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 px-4 py-2 text-xs font-medium tracking-wider text-zinc-400 uppercase backdrop-blur-md sm:gap-6 sm:rounded-full sm:px-5 sm:py-1.5"
+		class="flex flex-wrap items-center justify-center gap-6 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 px-4 py-2 text-xs font-medium tracking-wider text-zinc-400 uppercase sm:rounded-full sm:px-5 sm:py-1.5"
 	>
 		<span class={stage === 'ping' ? 'font-bold text-emerald-400' : ''}>1. Ping</span>
 		<span class="hidden text-zinc-700 sm:inline">•</span>
@@ -138,7 +138,7 @@
 		<span class={stage === 'upload' ? 'font-bold text-emerald-400' : ''}>3. Upload</span>
 	</div>
 
-	<div class="relative flex h-56 w-56 items-center justify-center sm:h-64 sm:w-64">
+	<div class="relative flex h-64 w-64 items-center justify-center">
 		<svg class="h-full w-full -rotate-225 transform" viewBox="0 0 300 300">
 			<circle
 				cx="150"
@@ -202,22 +202,26 @@
 		</div>
 	</div>
 
-	<div class="grid w-full grid-cols-1 gap-3 sm:grid-cols-3">
+	<div class="grid w-full grid-cols-3 gap-3">
 		<div
-			class="flex flex-col rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-3.5 backdrop-blur-md sm:p-4"
+			class="flex flex-col items-center rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-3.5 sm:p-4"
 		>
 			<span class="text-xs font-semibold tracking-wider text-zinc-400 uppercase">Ping</span>
-			<div class="mt-1 flex flex-wrap items-baseline gap-x-1.5 gap-y-0">
-				<span class="font-mono text-xl font-bold text-zinc-100 sm:text-2xl">{ping.toFixed(2)}</span>
+			<div
+				class="mt-1 flex flex-col items-center gap-x-1.5 gap-y-0 sm:flex-row sm:flex-wrap sm:items-baseline"
+			>
+				<span class="font-mono text-xl font-bold text-zinc-100 sm:text-2xl">{ping.toFixed(1)}</span>
 				<span class="text-xs text-zinc-500">ms</span>
 			</div>
 		</div>
 
 		<div
-			class="flex flex-col rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-3.5 backdrop-blur-md sm:p-4"
+			class="flex flex-col items-center rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-3.5 sm:p-4"
 		>
 			<span class="text-xs font-semibold tracking-wider text-zinc-400 uppercase">Download</span>
-			<div class="mt-1 flex flex-wrap items-baseline gap-x-1.5 gap-y-0">
+			<div
+				class="mt-1 flex flex-col items-center gap-x-1.5 gap-y-0 sm:flex-row sm:flex-wrap sm:items-baseline"
+			>
 				<span class="font-mono text-xl font-bold text-zinc-100 sm:text-2xl"
 					>{downloadMbps.toFixed(0)}</span
 				>
@@ -226,10 +230,12 @@
 		</div>
 
 		<div
-			class="flex flex-col rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-3.5 backdrop-blur-md sm:p-4"
+			class="flex flex-col items-center rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-3.5 sm:p-4"
 		>
 			<span class="text-xs font-semibold tracking-wider text-zinc-400 uppercase">Upload</span>
-			<div class="mt-1 flex flex-wrap items-baseline gap-x-1.5 gap-y-0">
+			<div
+				class="mt-1 flex flex-col items-center gap-x-1.5 gap-y-0 sm:flex-row sm:flex-wrap sm:items-baseline"
+			>
 				<span class="font-mono text-xl font-bold text-zinc-100 sm:text-2xl"
 					>{uploadMbps.toFixed(0)}</span
 				>
