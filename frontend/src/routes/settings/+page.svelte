@@ -57,7 +57,7 @@
 		<form onsubmit={handleSave} class="flex flex-col gap-5">
 			<div class="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between">
 				<div>
-					<label for="downloadSize" class="text-sm font-medium text-zinc-200">
+					<label for="download-size" class="text-sm font-medium text-zinc-200">
 						Download Payload Size
 					</label>
 					<p class="text-xs text-zinc-500">Amount of data transferred during the download phase.</p>
@@ -75,7 +75,7 @@
 
 			<div class="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between">
 				<div>
-					<label for="uploadSize" class="text-sm font-medium text-zinc-200">
+					<label for="upload-size" class="text-sm font-medium text-zinc-200">
 						Upload Payload Size
 					</label>
 					<p class="text-xs text-zinc-500">Amount of data transferred during the upload phase.</p>
