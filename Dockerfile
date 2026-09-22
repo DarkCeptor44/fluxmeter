@@ -23,8 +23,8 @@ RUN cargo build --release
 # stage 4: final build
 FROM gcr.io/distroless/cc-debian12:nonroot
 LABEL org.opencontainers.image.title="Fluxmeter" \
-      org.opencontainers.image.description="Lightweight speedtest server written in Rust"
-      org.opencontainers.image.license="MPL-2.0" \
+      org.opencontainers.image.description="Lightweight speedtest server written in Rust" \
+      org.opencontainers.image.licenses="MPL-2.0" \
       org.opencontainers.image.source="https://github.com/DarkCeptor44/fluxmeter"
 COPY --from=builder /app/target/release/fluxmeter /usr/local/bin/fluxmeter
 
