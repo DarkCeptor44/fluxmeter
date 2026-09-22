@@ -10,6 +10,7 @@
 	import { onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import { toast } from '$lib/toast.svelte';
+	import { t } from '$lib/i18n/index.svelte';
 
 	let ping = $state(0);
 	let downloadMbps = $state(0);
@@ -115,7 +116,7 @@
 			stage = 'complete';
 		} catch (err) {
 			console.error('Speed test failed:', err);
-			toast.show('Speed test failed', 'error');
+			toast.show(t('test.failed'), 'error');
 			stage = 'idle';
 		}
 	}
@@ -135,19 +136,19 @@
 	>
 		<span
 			class="transition-colors duration-150 {stage === 'ping' ? 'font-bold text-emerald-400' : ''}"
-			>1. Ping</span
+			>1. {t('stage.ping')}</span
 		>
 		<span class="hidden text-zinc-700 sm:inline">•</span>
 		<span
 			class="transition-colors duration-150 {stage === 'download'
 				? 'font-bold text-emerald-400'
-				: ''}">2. Download</span
+				: ''}">2. {t('stage.download')}</span
 		>
 		<span class="hidden text-zinc-700 sm:inline">•</span>
 		<span
 			class="transition-colors duration-150 {stage === 'upload'
 				? 'font-bold text-emerald-400'
-				: ''}">3. Upload</span
+				: ''}">3. {t('stage.upload')}</span
 		>
 	</div>
 
@@ -191,7 +192,7 @@
 					onclick={startTest}
 					class="group relative flex h-24 w-24 cursor-pointer items-center justify-center rounded-full bg-linear-to-tr from-emerald-500 to-teal-600 font-bold text-zinc-950 shadow-lg shadow-emerald-500/20 transition-all duration-200 hover:scale-105 active:scale-95 sm:h-28 sm:w-28"
 				>
-					<span class="text-base tracking-wider uppercase sm:text-lg">Start</span>
+					<span class="text-base tracking-wider uppercase sm:text-lg">{t('test.start')}</span>
 				</button>
 			{:else}
 				<div class="flex flex-col items-center">
@@ -208,7 +209,7 @@
 						Mbps
 					</span>
 					<span class="mt-1 text-[10px] font-medium text-zinc-500 uppercase">
-						{stage}ing...
+						{t(`test.inProgress${stage.capitalize()}`)}
 					</span>
 				</div>
 			{/if}
@@ -219,7 +220,9 @@
 		<div
 			class="flex flex-col items-center rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-3.5 sm:p-4"
 		>
-			<span class="text-xs font-semibold tracking-wider text-zinc-400 uppercase">Ping</span>
+			<span class="text-xs font-semibold tracking-wider text-zinc-400 uppercase"
+				>{t('stage.ping')}</span
+			>
 			<div
 				class="mt-1 flex flex-col items-center gap-x-1.5 gap-y-0 sm:flex-row sm:flex-wrap sm:items-baseline"
 			>
@@ -231,7 +234,9 @@
 		<div
 			class="flex flex-col items-center rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-3.5 sm:p-4"
 		>
-			<span class="text-xs font-semibold tracking-wider text-zinc-400 uppercase">Download</span>
+			<span class="text-xs font-semibold tracking-wider text-zinc-400 uppercase"
+				>{t('stage.download')}</span
+			>
 			<div
 				class="mt-1 flex flex-col items-center gap-x-1.5 gap-y-0 sm:flex-row sm:flex-wrap sm:items-baseline"
 			>
@@ -245,7 +250,9 @@
 		<div
 			class="flex flex-col items-center rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-3.5 sm:p-4"
 		>
-			<span class="text-xs font-semibold tracking-wider text-zinc-400 uppercase">Upload</span>
+			<span class="text-xs font-semibold tracking-wider text-zinc-400 uppercase"
+				>{t('stage.upload')}</span
+			>
 			<div
 				class="mt-1 flex flex-col items-center gap-x-1.5 gap-y-0 sm:flex-row sm:flex-wrap sm:items-baseline"
 			>
