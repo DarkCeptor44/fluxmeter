@@ -11,6 +11,7 @@
 	import '$lib/init';
 
 	import NavBar from '$lib/components/NavBar.svelte';
+	import ToastProvider from '$lib/components/ToastProvider.svelte';
 
 	onMount(() => {
 		if (DEV) {
@@ -22,6 +23,8 @@
 </script>
 
 <NavBar />
+
+<ToastProvider />
 
 <main class="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-4 py-2 sm:px-6">
 	{@render children()}

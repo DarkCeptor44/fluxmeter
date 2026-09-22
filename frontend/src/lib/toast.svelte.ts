@@ -1,0 +1,36 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+import { generateId } from './utils';
+
+export type ToastType = 'success' | 'error' | 'info';
+
+export interface Toast {
+	id: string;
+	message: string;
+	type: ToastType;
+}
+
+class ToastManager {
+	#toasts = $state<Toast[]>([]);
+
+	get items() {
+		return this.#toasts;
+	}
+
+	show(message: string, type: ToastType = 'success', durationMs = 4000) {
+		const id = generateId();
+		this.#toasts = [...this.#toasts, { id, message, type }];
+
+		setTimeout(() => {
+			this.dismiss(id);
+		}, durationMs);
+	}
+
+	dismiss(id: string) {
+		this.#toasts = this.#toasts.filter((t) => t.id !== id);
+	}
+}
+
+export const toast = new ToastManager();

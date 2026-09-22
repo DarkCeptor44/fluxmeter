@@ -6,6 +6,7 @@
 
 <script lang="ts">
 	import { browser } from '$app/environment';
+	import { toast } from '$lib/toast.svelte';
 	import { DEV } from '$lib';
 
 	import InputField from '$lib/components/InputField.svelte';
@@ -39,6 +40,8 @@
 			if (DEV) {
 				console.log('updated settings:', { downloadSize, uploadSize });
 			}
+
+			toast.show('Settings saved');
 		}
 	}
 </script>

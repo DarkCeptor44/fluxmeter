@@ -9,6 +9,7 @@
 	import { median, sleep } from '$lib/utils';
 	import { onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
+	import { toast } from '$lib/toast.svelte';
 
 	let ping = $state(0);
 	let downloadMbps = $state(0);
@@ -114,6 +115,7 @@
 			stage = 'complete';
 		} catch (err) {
 			console.error('Speed test failed:', err);
+			toast.show('Speed test failed', 'error');
 			stage = 'idle';
 		}
 	}
