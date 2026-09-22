@@ -9,7 +9,7 @@ license = "MPL-2.0"
 repository = "https://github.com/DarkCeptor44/fluxmeter"
 keywords = ["speedtest", "server", "local", "selfhosted"]
 categories = ["web-programming::http-server", "command-line-utilities"]
-include = ["src/**/*", "build.rs", "LICENSE*", "README*", "dist/**/*"]
+include = ["dist/**/*", "src/**/*"]
 
 [dependencies]
 anyhow = "1.0.104"
