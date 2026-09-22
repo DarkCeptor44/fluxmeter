@@ -18,6 +18,7 @@ COPY --from=planner /app/recipe.json recipe.json
 RUN cargo chef cook --release --recipe-path recipe.json
 
 COPY . .
+RUN cd frontend && bun install --frozen-lockfile
 RUN cargo build --release
 
 # stage 4: final build
