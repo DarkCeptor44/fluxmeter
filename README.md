@@ -1,12 +1,16 @@
 # Fluxmeter
 
-Fluxmeter is a lightweight speedtest server written in Rust
+Fluxmeter is a lightweight speedtest server written in Rust.
 
 ## Getting Started
 
-### From Source
+### Pre-built Binaries
 
-1. **Prerequisites:** Ensure you have the [Rust toolchain](https://rustup.rs/) installed (see [MSRV](#msrv) to know which Rust version you need).
+You can download a pre-built binary from the [Releases](https://github.com/DarkCeptor44/fluxmeter/releases) page.
+
+### Building From Source
+
+1. **Prerequisites:** Ensure you have the [Rust toolchain](https://rustup.rs/) and [Bun](https://bun.com/) installed.
 2. Clone the repo:
 
     ```bash
@@ -14,29 +18,19 @@ Fluxmeter is a lightweight speedtest server written in Rust
     cd fluxmeter
     ```
 
-3. (Optional) Run in development mode (not recommended):
+3. Run or build the binary:
 
     ```bash
+    # development
     cargo run
-    ```
 
-    Running other commands requires starting with `cargo run` in the repo root.
-
-4. (Optional) Install it with release mode:
-
-    ```bash
+    # local installation
     cargo install --path .
     ```
 
-    This allows you to use the `fluxmeter` command from anywhere.
-
-5. Check the [Usage](#usage) section to know how to use it.
-
 ## Usage
 
-Running `fluxmeter` without the `-h`/`--help` or `-V`/`--version` flags will start the server:
-
-```bash
+```console
 $ fluxmeter
 2026-09-22T10:49:07.4480111-03:00 [INFO]
 ===================================================
@@ -48,9 +42,7 @@ $ fluxmeter
     listening on http://localhost:7890
 ```
 
-Once the server is running, open your browser and go to <http://localhost:7890>, or whatever it says in the logs. You can change the host and port with the CLI flags:
-
-```bash
+```console
 $ fluxmeter -h
 A lightweight speedtest server
 
@@ -64,15 +56,13 @@ Options:
   -V, --version      Print version
 ```
 
-There are also environment variables, see [Environment Variables](#environment-variables).
-
 ## MSRV
 
 The minimum supported Rust version is:
 
 | Version | Edition | MSRV |
 | --- | --- | --- |
-| <= 0.1.0 | 2024 | 1.88.0 |
+| `<= 0.1.0` | 2024 | 1.88.0 |
 
 ## Environment Variables
 
