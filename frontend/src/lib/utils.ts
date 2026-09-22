@@ -21,8 +21,27 @@ export function generateId(): string {
 	return Math.random().toString(36).substring(2, 11);
 }
 
+/**
+ * Get the median of an array
+ * @param arr The number array
+ * @returns The median
+ */
 export function median(arr: number[]): number {
-	return arr.sort((a, b) => a - b)[Math.floor(arr.length / 2)];
+	if (arr.length === 0) return 0;
+
+	const sorted = [...arr].sort((a, b) => a - b);
+	const mid = Math.floor(sorted.length / 2);
+
+	if (sorted.length % 2 === 0) {
+		return (sorted[mid - 1] + sorted[mid]) / 2;
+	}
+
+	return sorted[mid];
 }
 
+/**
+ * Sleep for a given number of milliseconds
+ * @param ms The number of milliseconds
+ * @returns A promise
+ */
 export const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
