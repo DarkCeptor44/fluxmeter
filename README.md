@@ -1,16 +1,36 @@
 # Fluxmeter
 
-![Fluxmeter page](./assets/page.png)
-
 [![crates.io](https://img.shields.io/crates/v/fluxmeter.svg)](https://crates.io/crates/fluxmeter) [![MSRV](https://img.shields.io/crates/msrv/fluxmeter)](https://crates.io/crates/fluxmeter) [![license](https://img.shields.io/crates/l/fluxmeter.svg)](./LICENSE) [![downloads](https://img.shields.io/crates/d/fluxmeter)](https://crates.io/crates/fluxmeter)
 
-Fluxmeter is a lightweight, self-hosted speedtest server written in Rust. It embeds a modern web interface directly into a single, zero-dependency binary.
+Fluxmeter is a lightweight, self-hosted speedtest server written in Rust and Svelte. It embeds a static modern web interface directly into a single binary.
+
+![Fluxmeter page](./assets/page.png)
 
 ## Getting Started
 
-### Pre-built Binaries
+### Installation
 
-You can download a pre-built binary from the [Releases](https://github.com/DarkCeptor44/fluxmeter/releases) page.
+| Method | Command / Source |
+| --- | --- |
+| **Pre-built Binary** | Download from [GitHub Releases](https://github.com/DarkCeptor44/fluxmeter/releases) |
+| **Cargo** | `cargo install fluxmeter` |
+| **Docker** | `docker run -p 7890:7890 ghcr.io/darkceptor44/fluxmeter:latest` |
+
+### Docker Compose
+
+A [`compose.yml`](./compose.yml) file is provided for convenience:
+
+```yaml
+services:
+  flux:
+    container_name: flux
+    image: ghcr.io/darkceptor44/fluxmeter:latest
+    restart: unless-stopped
+    ports:
+      - 7890:7890
+    volumes:
+      - /etc/localtime:/etc/localtime:ro # for correct timestamp in logs
+```
 
 ### Building From Source
 
@@ -67,6 +87,20 @@ The minimum supported Rust version is:
 | Version | Edition | MSRV |
 | --- | --- | --- |
 | `<= 0.1.0` | 2024 | 1.88.0 |
+
+## Reverse Proxy
+
+I wouldn't recommend putting this behind a reverse proxy unless your proxy is running on a decent machine. If you want higher throughput in the tests then you might need to use a L4 proxy instead. If you use Caddy you can try this for extra performance:
+
+```Caddyfile
+fluxmeter.yourdomain.com {
+    reverse_proxy localhost:7890 {
+        flush_interval -1
+    }
+}
+```
+
+But L4 instead of L7 is a better bet.
 
 ## Environment Variables
 

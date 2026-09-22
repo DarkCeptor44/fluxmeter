@@ -1,0 +1,13 @@
+services:
+    flux:
+        container_name: flux
+        image: ghcr.io/darkceptor44/fluxmeter:latest
+        restart: unless-stopped
+        ports:
+            - 7890:7890
+        volumes:
+            - /etc/localtime:/etc/localtime:ro # for correct timestamp in logs
+        environment:
+            - FM_HOST=0.0.0.0 # not needed if you dont change the default
+            - FM_PORT=7890 # not needed if you dont change the default
+            #- FM_DEBUG=true # default is false
